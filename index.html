@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <main>
+        <script>
+            
+            
+            function game(){
+                computerScore = 0;
+                playerScore = 0;
+                for(i=0; i <= 4; i++){
+                    let playerSelection = playerPlay();
+                    let computerSelection = computerPlay();
+
+                    function computerPlay(){
+                        for (i <= 4;;){
+                        let computerRandom = (Math.random() * 3);
+                        let computerMove = " ";
+                        if (computerRandom >= 2){
+                          computerMove = "rock";
+                        } else if (computerRandom >= 1) {
+                          computerMove = "paper";
+                        } else {
+                         computerMove = "scissors";
+                        }
+                        return computerMove;
+                        }
+                    }
+
+                    function playerPlay(){
+                        let playerMove = prompt("What is your move? Rock, Paper, or Scissors?");
+                        playerMove = playerMove.toLowerCase();
+                        return playerMove;
+                    }
+
+                    function round(playerPlay, computerPlay){
+                        let outcome = 0;
+                        if (playerSelection == computerSelection) {
+                        outcome = 1;
+                        console.log ("It's a tie! You both chose " + computerSelection);
+                        } else if((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper")) {
+                        outcome = 2;
+                        console.log("You win! " + playerSelection + " beats " + computerSelection);
+                        } 
+                        else {
+                            outcome = 0;
+                            console.log("You lose! " + computerSelection + " beats " + playerSelection);
+                        }
+                        return outcome;
+                    }
+                    
+                    let roundWinner = round();
+                    if (roundWinner == 2){
+                        playerScore++;
+                    } else if (roundWinner == 0) {
+                        computerScore++;
+                    } else{
+                    }  
+                    console.log("Player score is: " + playerScore + "  Computer score is: " + computerScore)
+                }
+                
+            }
+
+            console.log(game());
+            
+
+        </script>
+
+    </main>
+  </body>
+</html>
